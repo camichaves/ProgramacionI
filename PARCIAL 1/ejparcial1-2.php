@@ -3,6 +3,7 @@
 $usudet="usuarion1";
 $clavedet=12345;
 $maildet="@gmail.com";
+
 for($i=0;$i<8;$i++){
 
         $usudet++;
@@ -28,7 +29,7 @@ for($i=0;$i<8;$i++){
 
     $list[$i]=$arr;
 }
-
+//print_r($list);
 $usuario=$_POST['us'];
 $clave=$_POST['clave'];
 $d=0;

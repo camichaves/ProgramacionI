@@ -1,6 +1,6 @@
 
 <?php
-print_r($_POST);
+
 $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
 $dia = $_POST['lista1'];
@@ -36,15 +36,16 @@ if(isset($_POST['cb'])) {
 }else{
 
     $cad="";
-    for($i=0;$i<(sizeof ($mes));$i++){
+    $u=count($meses);
+    for($i=0;$i<$u;$i++){
         if($meses[$i]==$mes){break;}
     }
     $dia0=$dia;
     $mes0=$i+1;
-    $mesnum=$i;
+    $mesnum=$i+1;
     if($dia0<10){$dia0="0$dia0";}
     if($mes0<10){$mes0="0$mes0";}
-    echo" $dia0/$mes0/$anio <br>";
+    echo" hoy es el $dia0/$mes0/$anio <br>";
 
 
     echo"<select name='lista' id='list'>";
@@ -57,12 +58,15 @@ if(isset($_POST['cb'])) {
 
 
    echo "<select name='lista2' id='list2' >";
+
     for($g=1;$g<13;$g++){
+        echo" var g $g, var mesnum $mesnum <br>";
         if ($mesnum==$g){ $cad=" selected ";}else{ $cad=" ";}
         if($g<10){$g="0$g";}
         echo "<option name='m$g' {$cad} > {$g}  </option>";
     }
     echo "</select>";
+
 
 
     echo "<select name='lista3' id='list3' >";
