@@ -27,21 +27,31 @@ else {
     ?>
     <label>Contenido:</label>
     <?php
-    session_start();
-    //if(session_status()=="PHP_SESSION_ACTIVE")
-    $total_imagenes = count(glob('Importados/{*.jpg,*.png}',GLOB_BRACE));
-     echo 'total_imagenes = '.$total_imagenes;
 
-    // para leer el directorio
-    $ruta = "./Importados/";
-    $filehandle = opendir($ruta);
 
-    while (false !== ($entrada = readdir($gestor))) {
-        echo "$entrada\n";
-    }
+   //areglo de extensiones permitidas
+$arr_exts=array("jpg","png");
 
-    closedir($filehandle);
-    //echo "<img src='Importados\img.{$extension}' >";
+//definimos el path de acceso
+$path = "Importados/";
+
+//abrimos el directorio
+$dir = opendir($path);
+
+//Mostramos las informaciones
+while ($elemento=readdir($dir))
+{
+   $ext=substr($elemento,-3);
+   if(($elemento!='.') && ($elemento!='..') && in_array($ext,$arr_exts))
+   {
+      echo '<img src="'.$path.$elemento.'">'.$elemento;
+      echo "<br>";
+   }
+}
+
+//Cerramos el directorio
+closedir($dir);
+
 
 
 
